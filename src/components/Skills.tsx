@@ -1,6 +1,6 @@
 import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
-import { skillGroups, certificates, courses } from "../data/skills";
+import { skillGroups, certifications, organizations } from "../data/skills";
 
 export function Skills() {
   return (
@@ -32,9 +32,9 @@ export function Skills() {
       <div className="mt-12 grid gap-6 sm:grid-cols-2">
         <Reveal>
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-widest text-ink">Certificates</h3>
+            <h3 className="text-sm font-semibold uppercase tracking-widest text-ink">Certifications</h3>
             <ul className="mt-4 space-y-2 text-sm text-theme-muted">
-              {certificates.map((c) => (
+              {certifications.map((c) => (
                 <li key={c.label} className="flex items-start gap-2">
                   <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-brand" />
                   {c.href ? (
@@ -51,17 +51,17 @@ export function Skills() {
         </Reveal>
         <Reveal delay={0.1}>
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-widest text-ink">Coursework</h3>
+            <h3 className="text-sm font-semibold uppercase tracking-widest text-ink">Organizations &amp; Service</h3>
             <ul className="mt-4 space-y-2 text-sm text-theme-muted">
-              {courses.map((c) => (
-                <li key={c.label} className="flex items-start gap-2">
+              {organizations.map((o) => (
+                <li key={o.label} className="flex items-start gap-2">
                   <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-brand" />
-                  {c.href ? (
-                    <a href={c.href} target="_blank" rel="noreferrer" className="hover:text-brand">
-                      {c.label}
+                  {o.href ? (
+                    <a href={o.href} target="_blank" rel="noreferrer" className="hover:text-brand">
+                      {o.label}
                     </a>
                   ) : (
-                    c.label
+                    o.label
                   )}
                 </li>
               ))}
