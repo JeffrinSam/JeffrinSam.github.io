@@ -1,28 +1,34 @@
-import { useState } from "react";
-import { FiPlay } from "react-icons/fi";
+import { useEffect, useRef, useState } from "react";
+import { AnimatePresence, motion, useInView } from "framer-motion";
 import type { MediaItem } from "../data/projects";
 
-function MediaFrame({ item }: { item: MediaItem }) {
+const ADVANCE_MS = 6000;
+
+function MediaFrame({ item, isActive }: { item: MediaItem; isActive: boolean }) {
   if (item.kind === "youtube") {
+    const params = isActive ? `?autoplay=1&mute=1&loop=1&playlist=${item.src}` : "";
     return (
       <iframe
-        src={`https://www.youtube-nocookie.com/embed/${item.src}`}
+        src={`https://www.youtube-nocookie.com/embed/${item.src}${params}`}
         title={item.label}
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen
-        className="aspect-video w-full rounded-lg border border-white/10"
+        className="aspect-video w-full rounded-lg border border-theme"
       />
     );
   }
   if (item.kind === "video") {
     return (
       <video
+        key={item.src}
         src={item.src}
+        autoPlay={isActive}
+        loop
         controls
         muted
         playsInline
         preload="metadata"
-        className="aspect-video w-full rounded-lg border border-white/10 bg-black"
+        className="aspect-video w-full rounded-lg border border-theme bg-black"
       />
     );
   }
@@ -31,50 +37,58 @@ function MediaFrame({ item }: { item: MediaItem }) {
       src={item.src}
       alt={item.label}
       loading="lazy"
-      className="w-full rounded-lg border border-white/10 bg-black object-contain"
+      className="w-full rounded-lg border border-theme bg-black object-contain"
     />
   );
 }
 
 export function MediaTabs({ media }: { media: MediaItem[] }) {
-  const firstSafeIndex = media.findIndex((m) => m.kind !== "gif");
-  const [active, setActive] = useState<number | null>(firstSafeIndex === -1 ? null : firstSafeIndex);
+  const [active, setActive] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const inView = useInView(containerRef, { amount: 0.3 });
 
-  if (media.length === 1 && media[0].kind !== "gif") {
-    return (
-      <div className="mb-4">
-        <MediaFrame item={media[0]} />
-      </div>
-    );
-  }
+  useEffect(() => {
+    if (media.length < 2 || !inView) return;
+    const t = setInterval(() => setActive((i) => (i + 1) % media.length), ADVANCE_MS);
+    return () => clearInterval(t);
+  }, [media.length, inView]);
 
   return (
-    <div className="mb-4">
-      {active !== null && (
-        <div className="mb-2">
-          <MediaFrame item={media[active]} />
+    <div className="mb-4" ref={containerRef}>
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={active}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
+          className="mb-2"
+        >
+          <MediaFrame item={media[active]} isActive={inView} />
+        </motion.div>
+      </AnimatePresence>
+
+      {media.length > 1 && (
+        <div className="flex flex-wrap gap-2">
+          {media.map((item, i) => (
+            <button
+              key={item.label}
+              type="button"
+              onClick={(e) => {
+                e.preventDefault();
+                setActive(i);
+              }}
+              className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs transition-colors ${
+                active === i
+                  ? "border-brand/60 bg-brand/10 text-brand"
+                  : "border-theme bg-theme-subtle text-theme-muted hover:border-brand/40"
+              }`}
+            >
+              {item.label}
+            </button>
+          ))}
         </div>
       )}
-      <div className="flex flex-wrap gap-2">
-        {media.map((item, i) => (
-          <button
-            key={item.label}
-            type="button"
-            onClick={(e) => {
-              e.preventDefault();
-              setActive(i);
-            }}
-            className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs transition-colors ${
-              active === i
-                ? "border-cyan-400/60 bg-cyan-400/10 text-cyan-300"
-                : "border-white/10 bg-white/[0.03] text-zinc-300 hover:border-cyan-400/40"
-            }`}
-          >
-            {item.kind === "gif" && <FiPlay size={11} />}
-            {item.label}
-          </button>
-        ))}
-      </div>
     </div>
   );
 }

@@ -10,15 +10,15 @@ export function Skills() {
       <div className="grid gap-6 sm:grid-cols-2">
         {skillGroups.map((group, i) => (
           <Reveal delay={i * 0.05} key={group.category}>
-            <div className="h-full rounded-2xl border border-white/10 bg-white/[0.02] p-6">
-              <h3 className="text-sm font-semibold uppercase tracking-widest text-zinc-300">
+            <div className="border-theme bg-theme-subtle h-full rounded-2xl border p-6">
+              <h3 className="text-sm font-semibold uppercase tracking-widest text-ink">
                 {group.category}
               </h3>
               <div className="mt-4 flex flex-wrap gap-2">
                 {group.items.map((item) => (
                   <span
                     key={item}
-                    className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1.5 text-sm text-zinc-200"
+                    className="border-theme rounded-full border bg-surface px-3 py-1.5 text-sm text-theme-muted"
                   >
                     {item}
                   </span>
@@ -32,13 +32,13 @@ export function Skills() {
       <div className="mt-12 grid gap-6 sm:grid-cols-2">
         <Reveal>
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-widest text-zinc-300">Certificates</h3>
-            <ul className="mt-4 space-y-2 text-sm text-zinc-400">
+            <h3 className="text-sm font-semibold uppercase tracking-widest text-ink">Certificates</h3>
+            <ul className="mt-4 space-y-2 text-sm text-theme-muted">
               {certificates.map((c) => (
                 <li key={c.label} className="flex items-start gap-2">
-                  <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-cyan-400" />
+                  <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-brand" />
                   {c.href ? (
-                    <a href={c.href} target="_blank" rel="noreferrer" className="hover:text-cyan-300">
+                    <a href={c.href} target="_blank" rel="noreferrer" className="hover:text-brand">
                       {c.label}
                     </a>
                   ) : (
@@ -51,13 +51,13 @@ export function Skills() {
         </Reveal>
         <Reveal delay={0.1}>
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-widest text-zinc-300">Coursework</h3>
-            <ul className="mt-4 space-y-2 text-sm text-zinc-400">
+            <h3 className="text-sm font-semibold uppercase tracking-widest text-ink">Coursework</h3>
+            <ul className="mt-4 space-y-2 text-sm text-theme-muted">
               {courses.map((c) => (
                 <li key={c.label} className="flex items-start gap-2">
-                  <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-violet-400" />
+                  <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-brand" />
                   {c.href ? (
-                    <a href={c.href} target="_blank" rel="noreferrer" className="hover:text-cyan-300">
+                    <a href={c.href} target="_blank" rel="noreferrer" className="hover:text-brand">
                       {c.label}
                     </a>
                   ) : (

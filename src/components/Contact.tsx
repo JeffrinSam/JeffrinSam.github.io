@@ -18,17 +18,17 @@ export function Contact() {
       <div className="bg-grid absolute inset-0 -z-10 [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,black,transparent)]" />
 
       <Reveal className="mx-auto max-w-2xl text-center">
-        <p className="font-mono text-sm uppercase tracking-[0.3em] text-cyan-400">Contact</p>
-        <h2 className="mt-3 font-[var(--font-display)] text-3xl font-semibold text-zinc-50 sm:text-4xl">
+        <p className="font-mono text-sm uppercase tracking-[0.3em] text-brand">Contact</p>
+        <h2 className="mt-3 font-[var(--font-display)] text-3xl font-semibold text-ink sm:text-4xl">
           Let's build something intelligent
         </h2>
-        <p className="mt-4 text-base text-zinc-400">
+        <p className="mt-4 text-base text-theme-muted">
           Open to Research Engineer and PhD opportunities in robotics and embodied AI. Reach out if you
           want to talk world models, VLA, or humanoid control.
         </p>
         <a
           href={profile.links.email}
-          className="mt-8 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-cyan-400 to-violet-400 px-8 py-3 text-sm font-medium text-ink-950 transition-transform hover:scale-105"
+          className="mt-8 inline-flex items-center gap-2 rounded-full bg-brand px-8 py-3 text-sm font-medium text-brand-ink transition-transform hover:scale-105"
         >
           <FiMail /> {profile.email}
         </a>
@@ -43,7 +43,7 @@ export function Contact() {
             rel={href.startsWith("mailto:") ? undefined : "noreferrer"}
             aria-label={label}
             title={label}
-            className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 text-zinc-300 transition-colors hover:border-cyan-400/60 hover:text-cyan-300"
+            className="border-theme flex h-11 w-11 items-center justify-center rounded-full border text-theme-muted transition-colors hover:border-brand hover:text-brand"
           >
             <Icon size={18} />
           </a>

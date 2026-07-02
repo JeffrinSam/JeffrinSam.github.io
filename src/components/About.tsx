@@ -14,22 +14,22 @@ export function About() {
     <section id="about" className="mx-auto max-w-6xl px-6 py-28">
       <SectionHeading eyebrow="About" title="Building the loop between simulation and reality" />
 
-      <div className="grid gap-12 md:grid-cols-5">
+      <div className="grid items-start gap-12 md:grid-cols-5">
         <Reveal delay={0.1} className="md:col-span-3">
-          <p className="text-base leading-relaxed text-zinc-300 sm:text-lg">{profile.bio}</p>
+          <p className="text-base leading-relaxed text-ink sm:text-lg">{profile.bio}</p>
         </Reveal>
 
         <Reveal delay={0.2} className="md:col-span-2">
           <img
             src="/media/jeff-portrait.jpg"
             alt={profile.name}
-            className="mb-5 aspect-[4/3] w-full rounded-2xl border border-white/10 object-cover"
+            className="border-theme mb-5 aspect-[4/3] w-full rounded-2xl border object-cover"
           />
-          <dl className="grid grid-cols-1 gap-5 rounded-2xl border border-white/10 bg-white/[0.02] p-6">
+          <dl className="border-theme bg-theme-subtle grid grid-cols-1 gap-5 rounded-2xl border p-6">
             {facts.map((fact) => (
               <div key={fact.label}>
-                <dt className="font-mono text-xs uppercase tracking-widest text-zinc-500">{fact.label}</dt>
-                <dd className="mt-1 text-sm text-zinc-100">{fact.value}</dd>
+                <dt className="font-mono text-xs uppercase tracking-widest text-theme-muted">{fact.label}</dt>
+                <dd className="mt-1 text-sm text-ink">{fact.value}</dd>
               </div>
             ))}
           </dl>

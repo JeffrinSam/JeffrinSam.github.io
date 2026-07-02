@@ -10,7 +10,7 @@ export function Publications() {
     <section id="publications" className="mx-auto max-w-6xl px-6 py-28">
       <SectionHeading eyebrow="Publications" title="Peer-reviewed research" />
 
-      <ul className="divide-y divide-white/10 rounded-2xl border border-white/10 bg-white/[0.02]">
+      <ul className="border-theme bg-theme-subtle divide-ink/10 divide-y rounded-2xl border">
         {publications.map((pub, i) => {
           const youtubeHref = pub.video ? `https://youtu.be/${pub.video}` : undefined;
           const primaryHref = pub.href ?? youtubeHref;
@@ -24,22 +24,22 @@ export function Publications() {
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.5, delay: i * 0.03, ease: "easeOut" }}
             >
-              <FiFileText className="mt-1 shrink-0 text-zinc-500" />
+              <FiFileText className="mt-1 shrink-0 text-theme-muted" />
               <div className="min-w-0 flex-1">
                 {primaryHref ? (
                   <a
                     href={primaryHref}
                     target="_blank"
                     rel="noreferrer"
-                    className="text-sm font-medium text-zinc-100 transition-colors hover:text-cyan-300 sm:text-base"
+                    className="text-sm font-medium text-ink transition-colors hover:text-brand sm:text-base"
                   >
                     {pub.title}
                   </a>
                 ) : (
-                  <p className="text-sm font-medium text-zinc-100 sm:text-base">{pub.title}</p>
+                  <p className="text-sm font-medium text-ink sm:text-base">{pub.title}</p>
                 )}
-                <p className="mt-1 text-sm text-zinc-500">{pub.venue}</p>
-                {pub.status && <p className="mt-1 text-xs text-cyan-300/90">{pub.status}</p>}
+                <p className="mt-1 text-sm text-theme-muted">{pub.venue}</p>
+                {pub.status && <p className="mt-1 text-xs text-brand">{pub.status}</p>}
               </div>
               <div className="flex shrink-0 items-center gap-3 pt-1">
                 {pub.href && pub.video && (
@@ -49,12 +49,12 @@ export function Publications() {
                     rel="noreferrer"
                     aria-label={`Watch video for ${pub.title}`}
                     title="Watch video"
-                    className="text-zinc-500 transition-colors hover:text-cyan-300"
+                    className="text-theme-muted transition-colors hover:text-brand"
                   >
                     <FiYoutube size={16} />
                   </a>
                 )}
-                {primaryHref && <FiExternalLink className="shrink-0 text-zinc-600" />}
+                {primaryHref && <FiExternalLink className="shrink-0 text-theme-muted" />}
               </div>
             </motion.li>
           );
@@ -66,7 +66,7 @@ export function Publications() {
           href={profile.links.scholar}
           target="_blank"
           rel="noreferrer"
-          className="inline-flex items-center gap-2 text-sm text-cyan-300 hover:text-cyan-200"
+          className="inline-flex items-center gap-2 text-sm text-brand hover:opacity-80"
         >
           View full publication list on Google Scholar <FiExternalLink />
         </a>
