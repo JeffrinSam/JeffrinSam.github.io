@@ -39,7 +39,15 @@ export function Publications() {
                   <p className="text-sm font-medium text-ink sm:text-base">{pub.title}</p>
                 )}
                 <p className="mt-1 text-sm text-theme-muted">{pub.venue}</p>
-                {pub.status && <p className="mt-1 text-xs text-brand">{pub.status}</p>}
+                {pub.status && (
+                  <span className="mt-1.5 inline-flex items-center gap-1.5 text-xs font-medium text-green-500">
+                    <span className="relative flex h-2 w-2">
+                      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-500 opacity-75" />
+                      <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
+                    </span>
+                    {pub.status}
+                  </span>
+                )}
               </div>
               <div className="flex shrink-0 items-center gap-3 pt-1">
                 {pub.href && pub.video && (

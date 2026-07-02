@@ -14,6 +14,7 @@ const G1_RAW = "https://raw.githubusercontent.com/JeffrinSam/JeffrinSam_G1/main"
 const VTOL_RAW = "https://raw.githubusercontent.com/JeffrinSam/VTOL-Tailsitter-Unity-SIL/main/Media";
 const RRT_RAW = "https://raw.githubusercontent.com/thexuanphuc/path-planning-project/master/media/unity";
 const MPC_RAW = "https://raw.githubusercontent.com/thexuanphuc/drone_mpc/present/src/media";
+const JEPA_RAW = "https://raw.githubusercontent.com/JeffrinSam/JEPAstudy/master/notebooks/gifs";
 
 export const projects: Project[] = [
   {
@@ -25,9 +26,29 @@ export const projects: Project[] = [
     href: "https://github.com/JeffrinSam/GENESIS",
     linkLabel: "View on GitHub",
     media: [
-      { label: "Flow Agent", kind: "video", src: "/media/genesis-flow-agent.mp4" },
       { label: "Action Agent", kind: "gif", src: "/media/action-agent.gif" },
+      { label: "Physical Agent", kind: "youtube", src: "CMD9ziE8KeI" },
     ],
+  },
+  {
+    title: "SafeHumanoid",
+    period: "2026",
+    description:
+      "VLM-RAG-driven impedance-control system for humanoid robots, connecting retrieved task knowledge to compliant, safe physical interaction on a Unitree G1. A VLM reads the egocentric scene and task prompt, and a RAG pipeline retrieves task-relevant scenarios to configure the joint-space impedance controller's gains and safety margins in real time.",
+    tags: ["Humanoid", "Impedance Control", "VLM-RAG"],
+    href: "https://dl.acm.org/doi/10.1145/3776734.3794539",
+    linkLabel: "Paper (ACM/IEEE HRI 2026)",
+    media: [{ label: "System Architecture", kind: "gif", src: "https://fermarc98.github.io/images/projects/safehumanoid/safehumanoid.png" }],
+  },
+  {
+    title: "GenerativeMPC",
+    period: "2026",
+    description:
+      "VLM-RAG-guided whole-body MPC framework with virtual impedance for bimanual mobile manipulation. Links semantic reasoning to compliant physical interaction, retrieving task-relevant episodes to configure impedance gains, velocity limits, and safety margins.",
+    tags: ["Whole-Body MPC", "VLM-RAG", "Virtual Impedance"],
+    href: "https://arxiv.org/abs/2604.19522",
+    linkLabel: "Paper (IEEE SMC 2026)",
+    media: [{ label: "Demo", kind: "gif", src: "https://fermarc98.github.io/images/projects/generativempc/GenMPC.gif" }],
   },
   {
     title: "MTC Industrial Immersion",
@@ -63,17 +84,21 @@ export const projects: Project[] = [
     media: [
       { label: "Pick & Place", kind: "gif", src: `${G1_RAW}/pick.gif` },
       { label: "Demo", kind: "gif", src: `${G1_RAW}/1%20(2).gif` },
+      { label: "VR Teleop", kind: "video", src: "/media/g1-vr-teleop.mp4" },
     ],
   },
   {
     title: "SONIC: Whole-Body Humanoid Control",
     period: "2025",
     description:
-      "Among the first known external deployments of NVIDIA's SONIC (GEAR-SONIC) whole-body control stack — reproducing the large-scale motion-tracking controller end to end in simulation and validating it on a real humanoid.",
+      "Among the first known external deployments of NVIDIA's SONIC (GEAR-SONIC) whole-body control stack — deployed first on NVIDIA Isaac Sim/Lab, then reproduced the large-scale motion-tracking controller end to end and validated it on a real humanoid.",
     tags: ["Whole-Body Control", "GR00T", "Humanoid Locomotion", "NVIDIA SONIC"],
     href: "https://nvlabs.github.io/GEAR-SONIC/",
     linkLabel: "NVIDIA GEAR-SONIC (official)",
-    media: [{ label: "Live Robot", kind: "video", src: "/media/gear-sonic-live.mp4" }],
+    media: [
+      { label: "Simulation", kind: "video", src: "/media/sonic-sim.mp4" },
+      { label: "Live Robot", kind: "video", src: "/media/gear-sonic-live.mp4" },
+    ],
   },
   {
     title: "JEPA Study",
@@ -83,9 +108,10 @@ export const projects: Project[] = [
     tags: ["World Models", "JEPA", "Self-Supervised Learning"],
     href: "https://github.com/JeffrinSam/JEPAstudy",
     linkLabel: "View on GitHub",
+    media: [{ label: "Collapse vs. Healthy", kind: "gif", src: `${JEPA_RAW}/01_collapse_vs_healthy.gif` }],
   },
   {
-    title: "RRT-Based Motion Planning",
+    title: "Sampling-Based Path Planning",
     period: "2025",
     description:
       "Comparative evaluation of sampling-based path planners (RRT, RRT*, Informed RRT*, BIT*, Custom RRT*) in 3D environments, with Unity visualizations. Contributed the Unity algorithm implementation and 3D visualization layer with a team of five.",
@@ -101,7 +127,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    title: "Quadcopter MPC",
+    title: "Quadcopter Trajectory Optimization with MPC",
     period: "2025",
     description:
       "Multiple-shooting, point-to-point Model Predictive Control for a quadcopter navigating a 3D environment with static obstacles, formulated with CasADi and solved with IPOPT.",

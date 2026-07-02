@@ -4,8 +4,8 @@ import { profile } from "../data/profile";
 
 const facts = [
   { label: "Based in", value: profile.location },
-  { label: "Current role", value: "Graduate Researcher, Skoltech ISR Lab" },
-  { label: "Focus", value: "VLA · World Models · Humanoid Control" },
+  { label: "Current role", value: "Skoltech ISR Lab · MWS AI (Contract)" },
+  { label: "Focus", value: "World Models · AI Safety · AGI · VLA · Humanoid Control" },
   { label: "Platforms", value: "Unitree G1 / H1 · UAV / VTOL" },
 ];
 

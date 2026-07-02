@@ -8,6 +8,14 @@ export type ExperienceEntry = {
 
 export const experience: ExperienceEntry[] = [
   {
+    period: "06.2026 — Present",
+    role: "Researcher — World Action Model",
+    org: "MWS AI · Contract",
+    location: "Moscow, Russia · Hybrid",
+    description:
+      "Developing Physical AI methods for autonomous robotic systems in non-deterministic physical and simulation environments, focused on world-action models for humanoid manipulation and locomotion. Fine-tunes large-scale World Action Models (WAMs) for closed-loop robot control, researches cross-embodiment generalization across humanoid platforms including Unitree G1 and UBTech Walker for industrial deployment, builds agentic pipelines for autonomous perception and decision-driven movement, and deploys learned policies on physical hardware for pick-and-place, navigation, and multi-step manipulation — working across NVIDIA Isaac Sim/Lab, ROS2, and robot SDKs to bridge simulation-trained policies with real-world deployment.",
+  },
+  {
     period: "10.2024 — Present",
     role: "Graduate Student Researcher (Physical AI)",
     org: "Skoltech, ISR Lab",
@@ -82,5 +90,6 @@ export const education: EducationEntry[] = [
     org: "Anna University — St. Xavier's Catholic College of Engineering",
     location: "Nagercoil, India",
     note: "CGPA 8.23/10 (First Class)",
+    thesis: "Facemask with Integrated Monitoring System (COVID-19 Model, Phase 1)",
   },
 ];
