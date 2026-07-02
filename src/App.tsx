@@ -9,11 +9,13 @@ import { Skills } from "./components/Skills";
 import { Contact } from "./components/Contact";
 import { Footer } from "./components/Footer";
 import { ThemeProvider } from "./hooks/useTheme";
+import { ParticleField } from "./components/ParticleField";
 
 function App() {
   return (
     <ThemeProvider>
-      <div className="min-h-svh bg-surface">
+      <ParticleField />
+      <div className="relative z-10 min-h-svh">
         <Navbar />
         <main>
           <Hero />

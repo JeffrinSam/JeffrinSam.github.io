@@ -90,6 +90,6 @@ export const education: EducationEntry[] = [
     org: "Anna University — St. Xavier's Catholic College of Engineering",
     location: "Nagercoil, India",
     note: "CGPA 8.23/10 (First Class)",
-    thesis: "Facemask with Integrated Monitoring System (COVID-19 Model, Phase 1)",
+    thesis: "Facemask with Integrated Monitoring System",
   },
 ];

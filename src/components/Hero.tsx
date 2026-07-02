@@ -1,18 +1,14 @@
 import { motion } from "framer-motion";
 import { profile } from "../data/profile";
 import { useTypewriter } from "../hooks/useTypewriter";
-import { useTheme } from "../hooks/useTheme";
-import { ParticleField } from "./ParticleField";
 import { FiArrowDown, FiDownload } from "react-icons/fi";
 
 export function Hero() {
   const typed = useTypewriter(profile.roles);
-  const { theme } = useTheme();
 
   return (
     <section id="top" className="relative flex min-h-svh items-center overflow-hidden pt-24">
       <div className="bg-grid absolute inset-0 [mask-image:radial-gradient(ellipse_60%_60%_at_50%_20%,black,transparent)]" />
-      <ParticleField theme={theme} />
       <div className="absolute left-1/2 top-1/3 h-72 w-72 -translate-x-1/2 rounded-full bg-brand/20 blur-[100px]" />
       <div className="absolute right-1/4 top-1/2 h-64 w-64 rounded-full bg-brand/10 blur-[100px]" />
 

@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { useTheme } from "../hooks/useTheme";
 
 type Particle = {
   x: number;
@@ -14,13 +15,14 @@ type Particle = {
 const DARK_COLORS = ["#ffffff", "#d4d4d4", "#8b8b8b"];
 const LIGHT_COLORS = ["#76b900", "#9ade4a", "#4d7a00", "#2b2b2b"];
 
-const PARTICLE_COUNT = 140;
-const REPEL_RADIUS = 110;
+const PARTICLE_COUNT = 160;
+const REPEL_RADIUS = 120;
 const REPEL_STRENGTH = 900;
 const SPRING = 0.02;
 const DAMPING = 0.9;
 
-export function ParticleField({ theme }: { theme: "light" | "dark" }) {
+export function ParticleField() {
+  const { theme } = useTheme();
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const particlesRef = useRef<Particle[]>([]);
   const mouseRef = useRef({ x: -9999, y: -9999 });
@@ -39,12 +41,12 @@ export function ParticleField({ theme }: { theme: "light" | "dark" }) {
     let raf = 0;
 
     const resize = () => {
-      const rect = canvas.getBoundingClientRect();
-      width = rect.width;
-      height = rect.height;
+      width = window.innerWidth;
+      height = window.innerHeight;
       const dpr = window.devicePixelRatio || 1;
       canvas.width = width * dpr;
       canvas.height = height * dpr;
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
       ctx.scale(dpr, dpr);
 
       particlesRef.current = Array.from({ length: PARTICLE_COUNT }, () => {
@@ -64,8 +66,7 @@ export function ParticleField({ theme }: { theme: "light" | "dark" }) {
     };
 
     const onMove = (e: MouseEvent) => {
-      const rect = canvas.getBoundingClientRect();
-      mouseRef.current = { x: e.clientX - rect.left, y: e.clientY - rect.top };
+      mouseRef.current = { x: e.clientX, y: e.clientY };
     };
     const onLeave = () => {
       mouseRef.current = { x: -9999, y: -9999 };
@@ -106,21 +107,22 @@ export function ParticleField({ theme }: { theme: "light" | "dark" }) {
     resize();
     window.addEventListener("resize", resize);
     window.addEventListener("mousemove", onMove);
-    canvas.addEventListener("mouseleave", onLeave);
+    document.addEventListener("mouseleave", onLeave);
     raf = requestAnimationFrame(tick);
 
     return () => {
       cancelAnimationFrame(raf);
       window.removeEventListener("resize", resize);
       window.removeEventListener("mousemove", onMove);
-      canvas.removeEventListener("mouseleave", onLeave);
+      document.removeEventListener("mouseleave", onLeave);
     };
   }, [theme]);
 
   return (
     <canvas
       ref={canvasRef}
-      className="pointer-events-none absolute inset-0 h-full w-full opacity-70"
+      className="pointer-events-none fixed inset-0 z-0 h-full w-full opacity-70"
+      style={{ width: "100vw", height: "100vh" }}
       aria-hidden="true"
     />
   );

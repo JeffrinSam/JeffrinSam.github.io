@@ -1,12 +1,21 @@
 import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
 import { profile } from "../data/profile";
+import { projects } from "../data/projects";
+import { publications } from "../data/publications";
 
 const facts = [
   { label: "Based in", value: profile.location },
   { label: "Current role", value: "Skoltech ISR Lab · MWS AI (Contract)" },
   { label: "Focus", value: "World Models · AI Safety · AGI · VLA · Humanoid Control" },
   { label: "Platforms", value: "Unitree G1 / H1 · UAV / VTOL" },
+];
+
+const stats = [
+  { value: `${publications.length}`, label: "Publications" },
+  { value: `${projects.length}`, label: "Projects" },
+  { value: "3", label: "Humanoid Platforms" },
+  { value: "4", label: "Countries Worked In" },
 ];
 
 export function About() {
@@ -17,6 +26,15 @@ export function About() {
       <div className="grid items-start gap-12 md:grid-cols-5">
         <Reveal delay={0.1} className="md:col-span-3">
           <p className="text-base leading-relaxed text-ink sm:text-lg">{profile.bio}</p>
+
+          <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-4">
+            {stats.map((stat) => (
+              <div key={stat.label} className="border-theme bg-theme-subtle rounded-2xl border p-5">
+                <p className="font-[var(--font-display)] text-3xl font-semibold text-brand">{stat.value}</p>
+                <p className="mt-1 text-xs text-theme-muted">{stat.label}</p>
+              </div>
+            ))}
+          </div>
         </Reveal>
 
         <Reveal delay={0.2} className="md:col-span-2">
