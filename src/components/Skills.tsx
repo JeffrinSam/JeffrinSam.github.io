@@ -35,9 +35,15 @@ export function Skills() {
             <h3 className="text-sm font-semibold uppercase tracking-widest text-zinc-300">Certificates</h3>
             <ul className="mt-4 space-y-2 text-sm text-zinc-400">
               {certificates.map((c) => (
-                <li key={c} className="flex items-start gap-2">
+                <li key={c.label} className="flex items-start gap-2">
                   <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-cyan-400" />
-                  {c}
+                  {c.href ? (
+                    <a href={c.href} target="_blank" rel="noreferrer" className="hover:text-cyan-300">
+                      {c.label}
+                    </a>
+                  ) : (
+                    c.label
+                  )}
                 </li>
               ))}
             </ul>
@@ -48,9 +54,15 @@ export function Skills() {
             <h3 className="text-sm font-semibold uppercase tracking-widest text-zinc-300">Coursework</h3>
             <ul className="mt-4 space-y-2 text-sm text-zinc-400">
               {courses.map((c) => (
-                <li key={c} className="flex items-start gap-2">
+                <li key={c.label} className="flex items-start gap-2">
                   <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-violet-400" />
-                  {c}
+                  {c.href ? (
+                    <a href={c.href} target="_blank" rel="noreferrer" className="hover:text-cyan-300">
+                      {c.label}
+                    </a>
+                  ) : (
+                    c.label
+                  )}
                 </li>
               ))}
             </ul>

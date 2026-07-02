@@ -1,19 +1,11 @@
 import { FiArrowUpRight } from "react-icons/fi";
 import type { Project } from "../data/projects";
+import { MediaTabs } from "./MediaTabs";
 
 export function ProjectCard({ project }: { project: Project }) {
   return (
     <div className="group flex h-full flex-col rounded-2xl border border-white/10 bg-white/[0.02] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-cyan-400/40 hover:bg-white/[0.04]">
-      {project.video && (
-        <video
-          src={project.video}
-          controls
-          muted
-          playsInline
-          preload="metadata"
-          className="mb-4 aspect-video w-full rounded-lg border border-white/10 bg-black"
-        />
-      )}
+      {project.media && <MediaTabs media={project.media} />}
       <a href={project.href} target="_blank" rel="noreferrer" className="flex flex-1 flex-col">
         <div className="flex items-start justify-between gap-4">
           <h3 className="text-lg font-semibold text-zinc-50">{project.title}</h3>

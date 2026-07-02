@@ -63,6 +63,7 @@ export type EducationEntry = {
   org: string;
   location: string;
   note?: string;
+  thesis?: string;
 };
 
 export const education: EducationEntry[] = [
@@ -71,6 +72,9 @@ export const education: EducationEntry[] = [
     degree: "M.Sc. in Engineering Systems (Robotics)",
     org: "Skolkovo Institute of Science and Technology (Skoltech)",
     location: "Moscow, Russia",
+    note: "Distinction with Honours",
+    thesis:
+      "Video World Model with Closed-Loop Iterative Replanning for Cross-Embodiment Robot Manipulation",
   },
   {
     period: "09.2017 — 05.2022",

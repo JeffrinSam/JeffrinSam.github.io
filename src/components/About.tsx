@@ -20,6 +20,11 @@ export function About() {
         </Reveal>
 
         <Reveal delay={0.2} className="md:col-span-2">
+          <img
+            src="/media/jeff-portrait.jpg"
+            alt={profile.name}
+            className="mb-5 aspect-[4/3] w-full rounded-2xl border border-white/10 object-cover"
+          />
           <dl className="grid grid-cols-1 gap-5 rounded-2xl border border-white/10 bg-white/[0.02] p-6">
             {facts.map((fact) => (
               <div key={fact.label}>

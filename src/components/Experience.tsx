@@ -41,7 +41,17 @@ export function Experience() {
                 <h4 className="mt-2 text-base font-semibold text-zinc-50">{edu.degree}</h4>
                 <p className="mt-1 text-sm text-cyan-300/90">{edu.org}</p>
                 <p className="mt-1 text-sm text-zinc-500">{edu.location}</p>
-                {edu.note && <p className="mt-3 text-sm text-zinc-400">{edu.note}</p>}
+                {edu.note && (
+                  <span className="mt-3 inline-block rounded-full border border-cyan-400/30 bg-cyan-400/10 px-3 py-1 text-xs text-cyan-300">
+                    {edu.note}
+                  </span>
+                )}
+                {edu.thesis && (
+                  <p className="mt-3 text-sm leading-relaxed text-zinc-400">
+                    <span className="text-zinc-500">Thesis: </span>
+                    {edu.thesis}
+                  </p>
+                )}
               </div>
             </Reveal>
           ))}

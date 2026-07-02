@@ -30,15 +30,29 @@ export const skillGroups: SkillGroup[] = [
   },
 ];
 
-export const certificates: string[] = [
-  "TensorFlow Developer — DeepLearning.AI",
-  "Google Cloud Skill Badge",
-  "MATLAB Onramp",
+export type Credential = { label: string; href?: string };
+
+export const certificates: Credential[] = [
+  { label: "Generative AI Fundamentals — Google", href: "https://www.skills.google/public_profiles/2c9425d5-0070-4220-8f41-402743909061/badges/4171549" },
+  { label: "TensorFlow Developer — DeepLearning.AI" },
+  { label: "MATLAB Onramp" },
 ];
 
-export const courses: string[] = [
-  "Modern Robotics: Motion, Kinematics, and Dynamics — Northwestern University",
-  "Deep Learning Specialization — DeepLearning.AI",
-  "Machine Learning Specialization — Stanford Online",
-  "Mathematics for ML and Data Science — DeepLearning.AI",
+export const courses: Credential[] = [
+  {
+    label: "Modern Robotics: Motion, Kinematics, and Dynamics — Northwestern University",
+    href: "https://www.coursera.org/account/accomplishments/specialization/certificate/NKG8J99F4YAT",
+  },
+  {
+    label: "Deep Learning Specialization — DeepLearning.AI",
+    href: "https://coursera.org/verify/specialization/YYA5RMENLVN5",
+  },
+  {
+    label: "Machine Learning Specialization — Stanford Online",
+    href: "https://coursera.org/verify/specialization/RRBXTZJGJZ5W",
+  },
+  {
+    label: "Mathematics for ML and Data Science — DeepLearning.AI",
+    href: "https://www.coursera.org/account/accomplishments/specialization/certificate/PM8PTPYWM4KG",
+  },
 ];

@@ -1,3 +1,5 @@
+export type MediaItem = { label: string; kind: "video" | "youtube" | "gif"; src: string };
+
 export type Project = {
   title: string;
   period: string;
@@ -5,8 +7,13 @@ export type Project = {
   tags: string[];
   href: string;
   linkLabel: string;
-  video?: string;
+  media?: MediaItem[];
 };
+
+const G1_RAW = "https://raw.githubusercontent.com/JeffrinSam/JeffrinSam_G1/main";
+const VTOL_RAW = "https://raw.githubusercontent.com/JeffrinSam/VTOL-Tailsitter-Unity-SIL/main/Media";
+const RRT_RAW = "https://raw.githubusercontent.com/thexuanphuc/path-planning-project/master/media/unity";
+const MPC_RAW = "https://raw.githubusercontent.com/thexuanphuc/drone_mpc/present/src/media";
 
 export const projects: Project[] = [
   {
@@ -17,6 +24,10 @@ export const projects: Project[] = [
     tags: ["Agentic Video Generation", "VLA", "Diffusion", "IROS 2026"],
     href: "https://github.com/JeffrinSam/GENESIS",
     linkLabel: "View on GitHub",
+    media: [
+      { label: "Action Agent", kind: "youtube", src: "jvL1_ckPTDo" },
+      { label: "Flow Agent", kind: "video", src: "/media/genesis-flow-agent.mp4" },
+    ],
   },
   {
     title: "MTC Industrial Immersion",
@@ -26,7 +37,7 @@ export const projects: Project[] = [
     tags: ["Isaac Sim", "Bimanual Manipulation", "GR00T N1.5", "Synthetic Data"],
     href: "https://github.com/JeffrinSam",
     linkLabel: "View profile",
-    video: "/media/mtc-industrial-immersion.mp4",
+    media: [{ label: "Demo", kind: "video", src: "/media/mtc-industrial-immersion.mp4" }],
   },
   {
     title: "VTOL Tailsitter Unity SIL",
@@ -36,6 +47,10 @@ export const projects: Project[] = [
     tags: ["Unity", "UAV", "SIL Testing", "Digital Twin"],
     href: "https://github.com/JeffrinSam/VTOL-Tailsitter-Unity-SIL",
     linkLabel: "View on GitHub",
+    media: [
+      { label: "Flight", kind: "gif", src: `${VTOL_RAW}/vtol.gif` },
+      { label: "Force Response", kind: "gif", src: `${VTOL_RAW}/force2-.gif` },
+    ],
   },
   {
     title: "Synthetic Data for Unitree G1",
@@ -45,15 +60,20 @@ export const projects: Project[] = [
     tags: ["Isaac Lab", "GR00T N1.5", "Imitation Learning", "Cosmos"],
     href: "https://github.com/JeffrinSam/JeffrinSam_G1",
     linkLabel: "View on GitHub",
+    media: [
+      { label: "Pick & Place", kind: "gif", src: `${G1_RAW}/pick.gif` },
+      { label: "Demo", kind: "gif", src: `${G1_RAW}/1%20(2).gif` },
+    ],
   },
   {
-    title: "GR00T Whole-Body Control",
+    title: "SONIC: Whole-Body Humanoid Control",
     period: "2025",
     description:
-      "Own implementation and simulation study built on top of NVIDIA's GR00T-WholeBodyControl, exploring whole-body loco-manipulation policies for humanoid control.",
-    tags: ["Whole-Body Control", "GR00T", "Humanoid Locomotion"],
-    href: "https://github.com/NVlabs/GR00T-WholeBodyControl",
-    linkLabel: "Reference: NVlabs/GR00T-WholeBodyControl",
+      "Among the first known external deployments of NVIDIA's SONIC (GEAR-SONIC) whole-body control stack — reproducing the large-scale motion-tracking controller end to end in simulation and validating it on a real humanoid.",
+    tags: ["Whole-Body Control", "GR00T", "Humanoid Locomotion", "NVIDIA SONIC"],
+    href: "https://nvlabs.github.io/GEAR-SONIC/",
+    linkLabel: "NVIDIA GEAR-SONIC (official)",
+    media: [{ label: "Live Robot", kind: "video", src: "/media/gear-sonic-live.mp4" }],
   },
   {
     title: "JEPA Study",
@@ -72,6 +92,13 @@ export const projects: Project[] = [
     tags: ["RRT / RRT*", "Unity", "Motion Planning", "Collaboration"],
     href: "https://github.com/thexuanphuc/path-planning-project",
     linkLabel: "View on GitHub",
+    media: [
+      { label: "RRT", kind: "gif", src: `${RRT_RAW}/RRT.gif` },
+      { label: "RRT*", kind: "gif", src: `${RRT_RAW}/RRT_star.gif` },
+      { label: "Informed RRT*", kind: "gif", src: `${RRT_RAW}/Informed_RRT_star.gif` },
+      { label: "BIT*", kind: "gif", src: `${RRT_RAW}/BIT_star.gif` },
+      { label: "Custom RRT*", kind: "gif", src: `${RRT_RAW}/Custom_RRT.gif` },
+    ],
   },
   {
     title: "Quadcopter MPC",
@@ -81,5 +108,9 @@ export const projects: Project[] = [
     tags: ["MPC", "CasADi", "UAV Control"],
     href: "https://github.com/thexuanphuc/drone_mpc",
     linkLabel: "View on GitHub",
+    media: [
+      { label: "Trajectory 1", kind: "gif", src: `${MPC_RAW}/Movie_009.gif` },
+      { label: "Trajectory 2", kind: "gif", src: `${MPC_RAW}/Movie_010.gif` },
+    ],
   },
 ];
