@@ -25,8 +25,8 @@ export const projects: Project[] = [
     href: "https://github.com/JeffrinSam/GENESIS",
     linkLabel: "View on GitHub",
     media: [
-      { label: "Action Agent", kind: "youtube", src: "jvL1_ckPTDo" },
       { label: "Flow Agent", kind: "video", src: "/media/genesis-flow-agent.mp4" },
+      { label: "Action Agent", kind: "gif", src: "/media/action-agent.gif" },
     ],
   },
   {

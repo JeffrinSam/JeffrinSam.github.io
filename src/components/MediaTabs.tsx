@@ -37,8 +37,8 @@ function MediaFrame({ item }: { item: MediaItem }) {
 }
 
 export function MediaTabs({ media }: { media: MediaItem[] }) {
-  const allGifs = media.every((m) => m.kind === "gif");
-  const [active, setActive] = useState<number | null>(allGifs ? null : 0);
+  const firstSafeIndex = media.findIndex((m) => m.kind !== "gif");
+  const [active, setActive] = useState<number | null>(firstSafeIndex === -1 ? null : firstSafeIndex);
 
   if (media.length === 1 && media[0].kind !== "gif") {
     return (
