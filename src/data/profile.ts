@@ -16,7 +16,7 @@ export const profile = {
     huggingface: "https://huggingface.co/JeffrinSam",
     scholar: "https://scholar.google.com/citations?user=OyIR64QAAAAJ&hl=en",
     linkedin: "https://www.linkedin.com/in/jeffrin-s-a-m/",
-    twitter: "https://x.com/JeffrinSam",
+    twitter: "https://x.com/JeffrinSA",
     email: "mailto:jeffrin.s.a@gmail.com",
   },
 };

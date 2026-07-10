@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { HiMenu, HiX } from "react-icons/hi";
 import { FiSun, FiMoon } from "react-icons/fi";
 import { useTheme } from "../hooks/useTheme";
+import { profile } from "../data/profile";
 
 const links = [
   { href: "#about", label: "About" },
@@ -33,7 +34,7 @@ export function Navbar() {
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <a href="#top" className="font-[var(--font-display)] text-lg font-semibold text-ink">
-          Jeffrin<span className="text-gradient">.</span>
+          {profile.name}
         </a>
 
         <ul className="hidden items-center gap-8 md:flex">
