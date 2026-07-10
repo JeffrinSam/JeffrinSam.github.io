@@ -1,15 +1,24 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
+import { FiChevronDown, FiChevronUp, FiLinkedin } from "react-icons/fi";
 import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
 import { experience, education } from "../data/experience";
+import { profile } from "../data/profile";
+
+const VISIBLE_COUNT = 4;
 
 export function Experience() {
+  const [expanded, setExpanded] = useState(false);
+  const visible = expanded ? experience : experience.slice(0, VISIBLE_COUNT);
+  const hasMore = experience.length > VISIBLE_COUNT;
+
   return (
     <section id="experience" className="mx-auto max-w-6xl px-6 py-28">
       <SectionHeading eyebrow="Experience" title="Where the work has happened" />
 
       <ol className="border-theme relative space-y-10 border-l pl-8">
-        {experience.map((item, i) => (
+        {visible.map((item, i) => (
           <motion.li
             key={item.role + item.org}
             className="relative"
@@ -28,6 +37,34 @@ export function Experience() {
           </motion.li>
         ))}
       </ol>
+
+      {hasMore && (
+        <Reveal className="mt-8 flex flex-wrap items-center gap-5">
+          <button
+            type="button"
+            onClick={() => setExpanded((v) => !v)}
+            className="border-theme inline-flex items-center gap-2 rounded-full border px-5 py-2.5 text-sm text-ink transition-colors hover:border-brand hover:text-brand-text"
+          >
+            {expanded ? (
+              <>
+                Show less <FiChevronUp />
+              </>
+            ) : (
+              <>
+                Show {experience.length - VISIBLE_COUNT} earlier roles <FiChevronDown />
+              </>
+            )}
+          </button>
+          <a
+            href={profile.links.linkedin}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 text-sm text-brand-text hover:opacity-80"
+          >
+            <FiLinkedin /> Full history on LinkedIn
+          </a>
+        </Reveal>
+      )}
 
       <div className="mt-20">
         <Reveal>

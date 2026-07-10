@@ -15,7 +15,7 @@ export function Talks() {
             <h3 className="mt-2 text-lg font-semibold text-ink">Presenting at ACM/IEEE HRI 2026</h3>
             <p className="mt-2 text-sm leading-relaxed text-theme-muted">
               Sharing recent work on humanoid and human-robot interaction research at the ACM/IEEE
-              International Conference on Human-Robot Interaction, 2026.
+              International Conference on Human-Robot Interaction, 2026 — Edinburgh, Scotland, UK.
             </p>
           </div>
         </Reveal>
