@@ -1,4 +1,3 @@
-import { lazy, Suspense } from "react";
 import { Navbar } from "./components/Navbar";
 import { Hero } from "./components/Hero";
 import { About } from "./components/About";
@@ -12,10 +11,6 @@ import { Footer } from "./components/Footer";
 import { ThemeProvider } from "./hooks/useTheme";
 import { ParticleField } from "./components/ParticleField";
 
-const RobotShowcase = lazy(() =>
-  import("./components/RobotShowcase").then((m) => ({ default: m.RobotShowcase })),
-);
-
 function App() {
   return (
     <ThemeProvider>
@@ -24,9 +19,6 @@ function App() {
         <Navbar />
         <main>
           <Hero />
-          <Suspense fallback={<div className="h-[420px] sm:h-[480px]" />}>
-            <RobotShowcase />
-          </Suspense>
           <About />
           <Experience />
           <Projects />
