@@ -15,7 +15,7 @@ export const profile = {
     github: "https://github.com/JeffrinSam",
     huggingface: "https://huggingface.co/JeffrinSam",
     scholar: "https://scholar.google.com/citations?user=OyIR64QAAAAJ&hl=en",
-    linkedin: "https://linkedin.com/in/jeffrinsam",
+    linkedin: "https://www.linkedin.com/in/jeffrin-s-a-m/",
     twitter: "https://x.com/JeffrinSam",
     email: "mailto:jeffrin.s.a@gmail.com",
   },

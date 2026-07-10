@@ -1,6 +1,5 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
-import { FiChevronDown, FiChevronUp, FiLinkedin } from "react-icons/fi";
+import { FiArrowUpRight, FiLinkedin } from "react-icons/fi";
 import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
 import { experience, education } from "../data/experience";
@@ -9,9 +8,8 @@ import { profile } from "../data/profile";
 const VISIBLE_COUNT = 4;
 
 export function Experience() {
-  const [expanded, setExpanded] = useState(false);
-  const visible = expanded ? experience : experience.slice(0, VISIBLE_COUNT);
-  const hasMore = experience.length > VISIBLE_COUNT;
+  const visible = experience.slice(0, VISIBLE_COUNT);
+  const remaining = experience.length - VISIBLE_COUNT;
 
   return (
     <section id="experience" className="mx-auto max-w-6xl px-6 py-28">
@@ -38,30 +36,15 @@ export function Experience() {
         ))}
       </ol>
 
-      {hasMore && (
-        <Reveal className="mt-8 flex flex-wrap items-center gap-5">
-          <button
-            type="button"
-            onClick={() => setExpanded((v) => !v)}
-            className="border-theme inline-flex items-center gap-2 rounded-full border px-5 py-2.5 text-sm text-ink transition-colors hover:border-brand hover:text-brand-text"
-          >
-            {expanded ? (
-              <>
-                Show less <FiChevronUp />
-              </>
-            ) : (
-              <>
-                Show {experience.length - VISIBLE_COUNT} earlier roles <FiChevronDown />
-              </>
-            )}
-          </button>
+      {remaining > 0 && (
+        <Reveal className="mt-8">
           <a
             href={profile.links.linkedin}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-2 text-sm text-brand-text hover:opacity-80"
+            className="border-theme inline-flex items-center gap-2 rounded-full border px-5 py-2.5 text-sm text-ink transition-colors hover:border-brand hover:text-brand-text"
           >
-            <FiLinkedin /> Full history on LinkedIn
+            <FiLinkedin /> Show {remaining} earlier roles — full history on LinkedIn <FiArrowUpRight />
           </a>
         </Reveal>
       )}
