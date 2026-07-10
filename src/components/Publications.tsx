@@ -31,7 +31,7 @@ export function Publications() {
                     href={primaryHref}
                     target="_blank"
                     rel="noreferrer"
-                    className="text-sm font-medium text-ink transition-colors hover:text-brand sm:text-base"
+                    className="text-sm font-medium text-ink transition-colors hover:text-brand-text sm:text-base"
                   >
                     {pub.title}
                   </a>
@@ -57,7 +57,7 @@ export function Publications() {
                     rel="noreferrer"
                     aria-label={`Watch video for ${pub.title}`}
                     title="Watch video"
-                    className="text-theme-muted transition-colors hover:text-brand"
+                    className="text-theme-muted transition-colors hover:text-brand-text"
                   >
                     <FiYoutube size={16} />
                   </a>
@@ -74,7 +74,7 @@ export function Publications() {
           href={profile.links.scholar}
           target="_blank"
           rel="noreferrer"
-          className="inline-flex items-center gap-2 text-sm text-brand hover:opacity-80"
+          className="inline-flex items-center gap-2 text-sm text-brand-text hover:opacity-80"
         >
           View full publication list on Google Scholar <FiExternalLink />
         </a>

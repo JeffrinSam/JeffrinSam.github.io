@@ -18,7 +18,7 @@ export function Contact() {
       <div className="bg-grid absolute inset-0 -z-10 [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,black,transparent)]" />
 
       <Reveal className="mx-auto max-w-2xl text-center">
-        <p className="font-mono text-sm uppercase tracking-[0.3em] text-brand">Contact</p>
+        <p className="font-mono text-sm uppercase tracking-[0.3em] text-brand-text">Contact</p>
         <h2 className="mt-3 font-[var(--font-display)] text-3xl font-semibold text-ink sm:text-4xl">
           Let's build something intelligent
         </h2>
@@ -43,7 +43,7 @@ export function Contact() {
             rel={href.startsWith("mailto:") ? undefined : "noreferrer"}
             aria-label={label}
             title={label}
-            className="border-theme flex h-11 w-11 items-center justify-center rounded-full border text-theme-muted transition-colors hover:border-brand hover:text-brand"
+            className="border-theme flex h-11 w-11 items-center justify-center rounded-full border text-theme-muted transition-colors hover:border-brand hover:text-brand-text"
           >
             <Icon size={18} />
           </a>

@@ -80,7 +80,7 @@ export function MediaTabs({ media }: { media: MediaItem[] }) {
               }}
               className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs transition-colors ${
                 active === i
-                  ? "border-brand/60 bg-brand/10 text-brand"
+                  ? "border-brand/60 bg-brand/10 text-brand-text"
                   : "border-theme bg-theme-subtle text-theme-muted hover:border-brand/40"
               }`}
             >

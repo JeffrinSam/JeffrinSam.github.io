@@ -9,7 +9,7 @@ export function ProjectCard({ project }: { project: Project }) {
       <a href={project.href} target="_blank" rel="noreferrer" className="flex flex-1 flex-col">
         <div className="flex items-start justify-between gap-4">
           <h3 className="text-lg font-semibold text-ink">{project.title}</h3>
-          <FiArrowUpRight className="mt-1 shrink-0 text-theme-muted transition-colors group-hover:text-brand" />
+          <FiArrowUpRight className="mt-1 shrink-0 text-theme-muted transition-colors group-hover:text-brand-text" />
         </div>
         <p className="mt-1 font-mono text-xs uppercase tracking-widest text-theme-muted">{project.period}</p>
         <p className="mt-3 flex-1 text-sm leading-relaxed text-theme-muted">{project.description}</p>

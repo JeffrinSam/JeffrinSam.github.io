@@ -38,7 +38,7 @@ export function Skills() {
                 <li key={c.label} className="flex items-start gap-2">
                   <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-brand" />
                   {c.href ? (
-                    <a href={c.href} target="_blank" rel="noreferrer" className="hover:text-brand">
+                    <a href={c.href} target="_blank" rel="noreferrer" className="hover:text-brand-text">
                       {c.label}
                     </a>
                   ) : (
@@ -57,7 +57,7 @@ export function Skills() {
                 <li key={o.label} className="flex items-start gap-2">
                   <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-brand" />
                   {o.href ? (
-                    <a href={o.href} target="_blank" rel="noreferrer" className="hover:text-brand">
+                    <a href={o.href} target="_blank" rel="noreferrer" className="hover:text-brand-text">
                       {o.label}
                     </a>
                   ) : (

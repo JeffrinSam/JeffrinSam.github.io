@@ -39,7 +39,7 @@ export function Navbar() {
         <ul className="hidden items-center gap-8 md:flex">
           {links.map((link) => (
             <li key={link.href}>
-              <a href={link.href} className="text-sm text-theme-muted transition-colors hover:text-brand">
+              <a href={link.href} className="text-sm text-theme-muted transition-colors hover:text-brand-text">
                 {link.label}
               </a>
             </li>
@@ -50,14 +50,14 @@ export function Navbar() {
           <button
             aria-label="Toggle color theme"
             onClick={toggleTheme}
-            className="border-theme flex h-9 w-9 items-center justify-center rounded-full border text-ink transition-colors hover:text-brand"
+            className="border-theme flex h-9 w-9 items-center justify-center rounded-full border text-ink transition-colors hover:text-brand-text"
           >
             {theme === "dark" ? <FiSun size={16} /> : <FiMoon size={16} />}
           </button>
 
           <a
             href="#contact"
-            className="border-theme hidden rounded-full border px-4 py-2 text-sm text-ink transition-colors hover:border-brand hover:text-brand md:inline-block"
+            className="border-theme hidden rounded-full border px-4 py-2 text-sm text-ink transition-colors hover:border-brand hover:text-brand-text md:inline-block"
           >
             Get in touch
           </a>
@@ -85,7 +85,7 @@ export function Navbar() {
                 <a
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className="block px-6 py-3 text-sm text-theme-muted hover:text-brand"
+                  className="block px-6 py-3 text-sm text-theme-muted hover:text-brand-text"
                 >
                   {link.label}
                 </a>

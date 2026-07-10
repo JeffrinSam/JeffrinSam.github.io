@@ -30,7 +30,7 @@ export function About() {
           <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-4">
             {stats.map((stat) => (
               <div key={stat.label} className="border-theme bg-theme-subtle rounded-2xl border p-5">
-                <p className="font-[var(--font-display)] text-3xl font-semibold text-brand">{stat.value}</p>
+                <p className="font-[var(--font-display)] text-3xl font-semibold text-brand-text">{stat.value}</p>
                 <p className="mt-1 text-xs text-theme-muted">{stat.label}</p>
               </div>
             ))}

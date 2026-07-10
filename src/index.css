@@ -9,6 +9,7 @@
   --color-ink: #0a0a0a;
   --color-ink-soft: #68696d;
   --color-brand: #76b900;
+  --color-brand-text: #4d7a00;
   --color-brand-ink: #0a0a0a;
   --color-grid-line: rgba(0, 0, 0, 0.06);
 }
@@ -19,6 +20,7 @@
   --color-ink: #f2f2f2;
   --color-ink-soft: #8b8b8b;
   --color-brand: #ffffff;
+  --color-brand-text: #ffffff;
   --color-brand-ink: #000000;
   --color-grid-line: rgba(255, 255, 255, 0.06);
 }
@@ -39,7 +41,7 @@ body {
 }
 
 .text-gradient {
-  color: var(--color-brand);
+  color: var(--color-brand-text);
 }
 
 .bg-grid {

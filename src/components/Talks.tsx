@@ -11,7 +11,7 @@ export function Talks() {
             className="h-48 w-full rounded-xl object-cover sm:w-64"
           />
           <div>
-            <p className="font-mono text-xs uppercase tracking-widest text-brand">Conference Talk</p>
+            <p className="font-mono text-xs uppercase tracking-widest text-brand-text">Conference Talk</p>
             <h3 className="mt-2 text-lg font-semibold text-ink">Presenting at ACM/IEEE HRI 2026</h3>
             <p className="mt-2 text-sm leading-relaxed text-theme-muted">
               Sharing recent work on humanoid and human-robot interaction research at the ACM/IEEE
@@ -21,7 +21,7 @@ export function Talks() {
         </Reveal>
 
         <Reveal delay={0.1} className="border-theme bg-theme-subtle h-full rounded-2xl border p-6">
-          <p className="font-mono text-xs uppercase tracking-widest text-brand">Research Vision</p>
+          <p className="font-mono text-xs uppercase tracking-widest text-brand-text">Research Vision</p>
           <h3 className="mt-2 text-lg font-semibold text-ink">PhysicalAgent</h3>
           <p className="mt-2 text-sm leading-relaxed text-theme-muted">
             Towards general cognitive robotics with foundation world models — an overview of the

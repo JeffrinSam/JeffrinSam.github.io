@@ -7,7 +7,7 @@ export function Footer() {
         <p>
           © {new Date().getFullYear()} {profile.name}. Built with React, Tailwind & Framer Motion.
         </p>
-        <a href="#top" className="hover:text-brand">
+        <a href="#top" className="hover:text-brand-text">
           Back to top ↑
         </a>
       </div>

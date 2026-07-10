@@ -18,7 +18,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="font-mono text-sm uppercase tracking-[0.3em] text-brand"
+            className="font-mono text-sm uppercase tracking-[0.3em] text-brand-text"
           >
             {profile.location}
           </motion.p>
@@ -68,7 +68,7 @@ export function Hero() {
             </a>
             <a
               href="/resume.pdf"
-              className="border-theme inline-flex items-center gap-2 rounded-full border px-6 py-3 text-sm text-ink transition-colors hover:border-brand hover:text-brand"
+              className="border-theme inline-flex items-center gap-2 rounded-full border px-6 py-3 text-sm text-ink transition-colors hover:border-brand hover:text-brand-text"
             >
               <FiDownload /> Resume
             </a>

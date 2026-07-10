@@ -42,7 +42,7 @@ export function Experience() {
                 <p className="mt-1 text-sm text-ink">{edu.org}</p>
                 <p className="mt-1 text-sm text-theme-muted">{edu.location}</p>
                 {edu.note && (
-                  <span className="mt-3 inline-block rounded-full border border-brand/30 bg-brand/10 px-3 py-1 text-xs text-brand">
+                  <span className="mt-3 inline-block rounded-full border border-brand/30 bg-brand/10 px-3 py-1 text-xs text-brand-text">
                     {edu.note}
                   </span>
                 )}
