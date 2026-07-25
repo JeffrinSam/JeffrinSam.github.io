@@ -76,6 +76,13 @@ export type EducationEntry = {
 
 export const education: EducationEntry[] = [
   {
+    period: "08.2026 — Present",
+    degree: "Ph.D. in Robotics",
+    org: "Khalifa University",
+    location: "Abu Dhabi, UAE",
+    note: "Incoming",
+  },
+  {
     period: "09.2024 — 06.2026",
     degree: "M.Sc. in Engineering Systems (Robotics)",
     org: "Skolkovo Institute of Science and Technology (Skoltech)",

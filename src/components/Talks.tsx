@@ -30,12 +30,11 @@ export function Talks() {
             Towards general cognitive robotics with foundation world models — an overview of the
             research direction behind this work.
           </p>
-          <iframe
-            src="https://www.youtube-nocookie.com/embed/CMD9ziE8KeI"
-            title="PhysicalAgent: Towards General Cognitive Robotics with Foundation World Models"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-            className="border-theme mt-4 aspect-video w-full rounded-lg border"
+          <img
+            src="/media/physical-agent.gif"
+            alt="PhysicalAgent: Towards General Cognitive Robotics with Foundation World Models"
+            loading="lazy"
+            className="border-theme mt-4 w-full rounded-lg border object-contain"
           />
         </Reveal>
       </div>

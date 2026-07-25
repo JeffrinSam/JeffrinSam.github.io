@@ -27,7 +27,7 @@ export const projects: Project[] = [
     linkLabel: "View on GitHub",
     media: [
       { label: "Action Agent", kind: "gif", src: "/media/action-agent.gif" },
-      { label: "Physical Agent", kind: "youtube", src: "CMD9ziE8KeI" },
+      { label: "Physical Agent", kind: "gif", src: "/media/physical-agent.gif" },
     ],
   },
   {

@@ -57,8 +57,11 @@ export const certifications: Credential[] = [
 ];
 
 export const organizations: Credential[] = [
-  { label: "ACM Student Member — Skoltech (Jan 2026 – Present)" },
-  { label: "IEEE Graduate Student Member — Skoltech (Dec 2025 – Present)" },
+  { label: "ACM Student Member — Skoltech (Jan 2026 – Present)", href: "https://dl.acm.org/profile/99661838377" },
+  {
+    label: "IEEE Graduate Student Member — Skoltech (Dec 2025 – Present)",
+    href: "https://ieee-collabratec.ieee.org/app/p/JeffrinSam?slv=true",
+  },
   { label: "IEEE Student Member — Anna University (2020 – Present)" },
   { label: "National Service Scheme Volunteer (2018–2020) — Jal Shakti Abhiyan Award, Govt. of India, 2019" },
 ];

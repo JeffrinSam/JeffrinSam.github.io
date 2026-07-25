@@ -1,5 +1,5 @@
 import { FiMail, FiGithub, FiLinkedin, FiTwitter } from "react-icons/fi";
-import { SiHuggingface, SiGooglescholar } from "react-icons/si";
+import { SiHuggingface, SiGooglescholar, SiOrcid } from "react-icons/si";
 import { Reveal } from "./Reveal";
 import { profile } from "../data/profile";
 
@@ -9,6 +9,7 @@ const socials = [
   { label: "LinkedIn", href: profile.links.linkedin, icon: FiLinkedin },
   { label: "Google Scholar", href: profile.links.scholar, icon: SiGooglescholar },
   { label: "Hugging Face", href: profile.links.huggingface, icon: SiHuggingface },
+  { label: "ORCID", href: profile.links.orcid, icon: SiOrcid },
   { label: "X / Twitter", href: profile.links.twitter, icon: FiTwitter },
 ];
 
@@ -23,14 +24,15 @@ export function Contact() {
           Let's build something intelligent
         </h2>
         <p className="mt-4 text-base text-theme-muted">
-          Open to Research Engineer and PhD opportunities in robotics and embodied AI. Reach out if you
-          want to talk world models, VLA, or humanoid control.
+          Starting a Ph.D. in Robotics at Khalifa University this fall. Open to research
+          collaborations and engineering opportunities in embodied AI — reach out if you want to
+          talk world models, VLA, or humanoid control.
         </p>
         <a
           href={profile.links.email}
           className="mt-8 inline-flex items-center gap-2 rounded-full bg-brand px-8 py-3 text-sm font-medium text-brand-ink transition-transform hover:scale-105"
         >
-          <FiMail /> {profile.email}
+          <FiMail /> Send me an email
         </a>
       </Reveal>
 

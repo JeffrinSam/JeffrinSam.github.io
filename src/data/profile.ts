@@ -17,6 +17,9 @@ export const profile = {
     scholar: "https://scholar.google.com/citations?user=OyIR64QAAAAJ&hl=en",
     linkedin: "https://www.linkedin.com/in/jeffrin-s-a-m/",
     twitter: "https://x.com/JeffrinSA",
+    orcid: "https://orcid.org/0009-0000-8635-5379",
+    acm: "https://dl.acm.org/profile/99661838377",
+    ieee: "https://ieee-collabratec.ieee.org/app/p/JeffrinSam?slv=true",
     email: "mailto:jeffrin.s.a@gmail.com",
   },
 };
