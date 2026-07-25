@@ -58,7 +58,7 @@ export const projects: Project[] = [
     tags: ["Isaac Sim", "Bimanual Manipulation", "GR00T N1.5", "Synthetic Data"],
     href: "https://github.com/JeffrinSam",
     linkLabel: "View profile",
-    media: [{ label: "Demo", kind: "video", src: "/media/mtc-industrial-immersion.mp4" }],
+    media: [{ label: "Demo", kind: "gif", src: "/media/mtc-industrial-immersion.gif" }],
   },
   {
     title: "VTOL Tailsitter Unity SIL",
@@ -84,7 +84,7 @@ export const projects: Project[] = [
     media: [
       { label: "Pick & Place", kind: "gif", src: `${G1_RAW}/pick.gif` },
       { label: "Demo", kind: "gif", src: `${G1_RAW}/1%20(2).gif` },
-      { label: "VR Teleop", kind: "video", src: "/media/g1-vr-teleop.mp4" },
+      { label: "VR Teleop", kind: "gif", src: "/media/g1-vr-teleop.gif" },
     ],
   },
   {
@@ -96,8 +96,8 @@ export const projects: Project[] = [
     href: "https://nvlabs.github.io/GEAR-SONIC/",
     linkLabel: "NVIDIA GEAR-SONIC (official)",
     media: [
-      { label: "Simulation", kind: "video", src: "/media/sonic-sim.mp4" },
-      { label: "Live Robot", kind: "video", src: "/media/gear-sonic-live.mp4" },
+      { label: "Simulation", kind: "gif", src: "/media/sonic-sim.gif" },
+      { label: "Live Robot", kind: "gif", src: "/media/gear-sonic-live.gif" },
     ],
   },
   {

@@ -28,15 +28,9 @@ export function Contact() {
           collaborations and engineering opportunities in embodied AI — reach out if you want to
           talk world models, VLA, or humanoid control.
         </p>
-        <a
-          href={profile.links.email}
-          className="mt-8 inline-flex items-center gap-2 rounded-full bg-brand px-8 py-3 text-sm font-medium text-brand-ink transition-transform hover:scale-105"
-        >
-          <FiMail /> Send me an email
-        </a>
       </Reveal>
 
-      <Reveal delay={0.15} className="mt-14 flex flex-wrap items-center justify-center gap-4">
+      <Reveal delay={0.15} className="mt-10 flex flex-wrap items-center justify-center gap-4">
         {socials.map(({ label, href, icon: Icon }) => (
           <a
             key={label}

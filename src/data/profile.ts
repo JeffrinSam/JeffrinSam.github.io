@@ -1,6 +1,6 @@
 export const profile = {
   name: "Jeffrin Sam",
-  location: "Moscow, Russia · Abu Dhabi, UAE",
+  location: "Abu Dhabi, UAE · Moscow, Russia",
   email: "jeffrin.s.a@gmail.com",
   roles: [
     "Robotics AI Researcher",

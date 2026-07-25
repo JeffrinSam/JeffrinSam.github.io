@@ -1,9 +1,8 @@
 import { Navbar } from "./components/Navbar";
 import { Hero } from "./components/Hero";
-import { Badges } from "./components/Badges";
 import { About } from "./components/About";
-import { Experience } from "./components/Experience";
 import { Projects } from "./components/Projects";
+import { Experience } from "./components/Experience";
 import { Publications } from "./components/Publications";
 import { Talks } from "./components/Talks";
 import { Skills } from "./components/Skills";
@@ -20,10 +19,9 @@ function App() {
         <Navbar />
         <main>
           <Hero />
-          <Badges />
           <About />
-          <Experience />
           <Projects />
+          <Experience />
           <Publications />
           <Talks />
           <Skills />

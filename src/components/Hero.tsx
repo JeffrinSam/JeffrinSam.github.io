@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { profile } from "../data/profile";
 import { useTypewriter } from "../hooks/useTypewriter";
-import { FiArrowDown, FiDownload } from "react-icons/fi";
+import { FiArrowDown } from "react-icons/fi";
 
 export function Hero() {
   const typed = useTypewriter(profile.roles);
@@ -65,12 +65,6 @@ export function Hero() {
               className="rounded-full bg-brand px-6 py-3 text-sm font-medium text-brand-ink transition-transform hover:scale-105"
             >
               View my work
-            </a>
-            <a
-              href="/resume.pdf"
-              className="border-theme inline-flex items-center gap-2 rounded-full border px-6 py-3 text-sm text-ink transition-colors hover:border-brand hover:text-brand-text"
-            >
-              <FiDownload /> Resume
             </a>
           </motion.div>
         </div>

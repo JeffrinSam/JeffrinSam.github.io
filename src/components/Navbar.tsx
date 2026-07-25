@@ -7,8 +7,8 @@ import { profile } from "../data/profile";
 
 const links = [
   { href: "#about", label: "About" },
-  { href: "#experience", label: "Experience" },
   { href: "#projects", label: "Projects" },
+  { href: "#experience", label: "Experience" },
   { href: "#publications", label: "Publications" },
   { href: "#skills", label: "Skills" },
   { href: "#contact", label: "Contact" },
