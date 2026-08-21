@@ -2,7 +2,9 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { HiMenu, HiX } from "react-icons/hi";
 import { FiSun, FiMoon } from "react-icons/fi";
+import { TbRobot } from "react-icons/tb";
 import { useTheme } from "../hooks/useTheme";
+import { useRobot } from "../context/RobotContext";
 import { profile } from "../data/profile";
 
 const links = [
@@ -18,6 +20,7 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
+  const { enabled, toggleControls } = useRobot();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -48,6 +51,23 @@ export function Navbar() {
         </ul>
 
         <div className="flex items-center gap-3">
+          <button
+            aria-label="Toggle 3D Robot Controls"
+            onClick={toggleControls}
+            title={enabled ? "Configure 3D Robot Playground" : "3D Robots are currently OFF"}
+            className={`border-theme relative flex h-9 w-9 items-center justify-center rounded-full border transition-all hover:scale-105 ${
+              enabled ? "text-brand border-brand/60 bg-brand/10" : "text-theme-muted hover:text-ink"
+            }`}
+          >
+            <TbRobot size={18} />
+            {enabled && (
+              <span className="absolute top-1.5 right-1.5 flex h-1.5 w-1.5">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand opacity-75" />
+                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-brand" />
+              </span>
+            )}
+          </button>
+
           <button
             aria-label="Toggle color theme"
             onClick={toggleTheme}

@@ -9,26 +9,33 @@ import { Skills } from "./components/Skills";
 import { Contact } from "./components/Contact";
 import { Footer } from "./components/Footer";
 import { ThemeProvider } from "./hooks/useTheme";
+import { RobotProvider } from "./context/RobotContext";
 import { ParticleField } from "./components/ParticleField";
+import { RobotBackground } from "./components/RobotBackground";
+import { RobotControls } from "./components/RobotControls";
 
 function App() {
   return (
     <ThemeProvider>
-      <ParticleField />
-      <div className="relative z-10 min-h-svh">
-        <Navbar />
-        <main>
-          <Hero />
-          <About />
-          <Projects />
-          <Experience />
-          <Publications />
-          <Talks />
-          <Skills />
-          <Contact />
-        </main>
-        <Footer />
-      </div>
+      <RobotProvider>
+        <ParticleField />
+        <RobotBackground />
+        <div className="relative z-10 min-h-svh">
+          <Navbar />
+          <main>
+            <Hero />
+            <About />
+            <Projects />
+            <Experience />
+            <Publications />
+            <Talks />
+            <Skills />
+            <Contact />
+          </main>
+          <Footer />
+        </div>
+        <RobotControls />
+      </RobotProvider>
     </ThemeProvider>
   );
 }

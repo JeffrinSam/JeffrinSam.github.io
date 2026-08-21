@@ -25,6 +25,10 @@ All page content lives in `src/data/`:
 
 Replace `public/resume.pdf` to update the downloadable resume.
 
+## Robot playground
+
+The dancing G1 background (`src/components/RobotBackground.tsx`) loads `public/robot/g1.glb` and animates joints using `src/data/robotJoints.ts`. To regenerate the model from the source URDF, run `scripts/urdf-to-glb.py` (paths to the URDF are hardcoded at the top), then re-encode with `npx gltf-transform weld` + `npx gltf-transform draco`. The draco decoder lives in `public/draco/`.
+
 ## Deployment
 
 On push to `main`, `.github/workflows/deploy.yml` builds the site and publishes `dist/` to GitHub Pages. In the repo settings, under **Pages**, set the source to **GitHub Actions** (one-time setup).
