@@ -41,7 +41,7 @@ export function RobotProvider({ children }: { children: React.ReactNode }) {
 
   const [formation, setFormationState] = useState<RobotFormation>(() => {
     const saved = localStorage.getItem(STORAGE_KEY_FORMATION) as RobotFormation;
-    return saved === "solo" || saved === "duet" || saved === "trio" ? saved : "duet";
+    return saved === "solo" || saved === "duet" || saved === "trio" ? saved : "trio";
   });
 
   const [move, setMoveState] = useState<DanceMoveKey>(() => {

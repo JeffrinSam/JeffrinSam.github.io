@@ -20,7 +20,7 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
-  const { enabled, toggleControls } = useRobot();
+  const { enabled, toggleEnabled } = useRobot();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -52,9 +52,9 @@ export function Navbar() {
 
         <div className="flex items-center gap-3">
           <button
-            aria-label="Toggle 3D Robot Controls"
-            onClick={toggleControls}
-            title={enabled ? "Configure 3D Robot Playground" : "3D Robots are currently OFF"}
+            aria-label={enabled ? "Turn off dancing robots" : "Turn on dancing robots"}
+            onClick={toggleEnabled}
+            title={enabled ? "Turn off dancing robots" : "Turn on dancing robots"}
             className={`border-theme relative flex h-9 w-9 items-center justify-center rounded-full border transition-all hover:scale-105 ${
               enabled ? "text-brand border-brand/60 bg-brand/10" : "text-theme-muted hover:text-ink"
             }`}

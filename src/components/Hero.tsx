@@ -73,13 +73,13 @@ export function Hero() {
           initial={{ opacity: 0, scale: 0.94 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.7, delay: 0.2 }}
-          className="relative mx-auto w-full max-w-sm lg:max-w-none"
+          className="relative z-10 mx-auto w-full max-w-sm lg:max-w-none"
         >
-          <div className="absolute -inset-4 rounded-[2rem] bg-brand/20 blur-2xl" />
+          <div className="absolute -inset-4 rounded-[2rem] bg-brand/30 blur-2xl" />
           <img
             src="/media/jeff-with-g1.jpg"
             alt={`${profile.name} with a Unitree humanoid and VTOL build`}
-            className="border-theme relative aspect-[4/5] w-full rounded-[2rem] border object-cover"
+            className="border-theme relative aspect-[4/5] w-full rounded-[2rem] border-2 object-cover shadow-2xl ring-1 ring-ink/10"
           />
         </motion.div>
       </div>

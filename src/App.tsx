@@ -12,7 +12,6 @@ import { ThemeProvider } from "./hooks/useTheme";
 import { RobotProvider } from "./context/RobotContext";
 import { ParticleField } from "./components/ParticleField";
 import { RobotBackground } from "./components/RobotBackground";
-import { RobotControls } from "./components/RobotControls";
 
 function App() {
   return (
@@ -34,7 +33,6 @@ function App() {
           </main>
           <Footer />
         </div>
-        <RobotControls />
       </RobotProvider>
     </ThemeProvider>
   );
