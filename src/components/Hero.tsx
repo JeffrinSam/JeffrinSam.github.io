@@ -48,6 +48,24 @@ export function Hero() {
           <motion.p
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.25 }}
+            className="mt-2 text-sm text-theme-muted"
+          >
+            Physical AI researcher with{" "}
+            <a
+              href={profile.links.kura}
+              target="_blank"
+              rel="noreferrer"
+              className="text-brand-text underline decoration-brand/40 underline-offset-4 transition-colors hover:decoration-brand"
+            >
+              KURA
+            </a>{" "}
+            at Khalifa University
+          </motion.p>
+
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
             className="mt-6 max-w-2xl text-base leading-relaxed text-theme-muted sm:text-lg"
           >
@@ -65,6 +83,12 @@ export function Hero() {
               className="rounded-full bg-brand px-6 py-3 text-sm font-medium text-brand-ink transition-transform hover:scale-105"
             >
               View my work
+            </a>
+            <a
+              href="#contact"
+              className="border-theme rounded-full border px-6 py-3 text-sm font-medium text-ink transition-colors hover:border-brand hover:text-brand-text"
+            >
+              Open to collaboration
             </a>
           </motion.div>
         </div>

@@ -29,7 +29,17 @@ export function Experience() {
             <p className="font-mono text-xs uppercase tracking-widest text-theme-muted">{item.period}</p>
             <h3 className="mt-1 text-lg font-semibold text-ink">{item.role}</h3>
             <p className="text-sm text-ink">
-              {item.org} · {item.location}
+              {item.orgUrl ? (
+                <a
+                  href={item.orgUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-1 underline decoration-brand/40 underline-offset-4 transition-colors hover:text-brand-text hover:decoration-brand"
+                >
+                  {item.org} <FiArrowUpRight aria-hidden="true" />
+                </a>
+              ) : item.org}{" "}
+              · {item.location}
             </p>
             <p className="mt-2 text-sm leading-relaxed text-theme-muted">{item.description}</p>
           </motion.li>

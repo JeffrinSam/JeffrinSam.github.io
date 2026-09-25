@@ -2,13 +2,23 @@ export type ExperienceEntry = {
   period: string;
   role: string;
   org: string;
+  orgUrl?: string;
   location: string;
   description: string;
 };
 
 export const experience: ExperienceEntry[] = [
   {
-    period: "06.2026 — Present",
+    period: "2026 — Present",
+    role: "Physical AI Researcher",
+    org: "KURA · Khalifa University",
+    orgUrl: "https://kura.ae/",
+    location: "Abu Dhabi, UAE",
+    description:
+      "Researching Physical AI with KURA (Khalifa University Robotics Athletes), Khalifa University's humanoid robotic football team. Working on robotics alongside my Ph.D. in Robotics.",
+  },
+  {
+    period: "06.2026 — 09.2026",
     role: "Researcher — World Action Model",
     org: "MWS AI · Contract",
     location: "Moscow, Russia · Hybrid",
@@ -16,7 +26,7 @@ export const experience: ExperienceEntry[] = [
       "Developing Physical AI methods for autonomous robotic systems in non-deterministic physical and simulation environments, focused on world-action models for humanoid manipulation and locomotion. Fine-tunes large-scale World Action Models (WAMs) for closed-loop robot control, researches cross-embodiment generalization across humanoid platforms including Unitree G1 and UBTech Walker for industrial deployment, builds agentic pipelines for autonomous perception and decision-driven movement, and deploys learned policies on physical hardware for pick-and-place, navigation, and multi-step manipulation — working across NVIDIA Isaac Sim/Lab, ROS2, and robot SDKs to bridge simulation-trained policies with real-world deployment.",
   },
   {
-    period: "10.2024 — Present",
+    period: "10.2024 — 09.2026",
     role: "Graduate Student Researcher (Physical AI)",
     org: "Skoltech, ISR Lab",
     location: "Moscow, Russia",
@@ -80,7 +90,7 @@ export const education: EducationEntry[] = [
     degree: "Ph.D. in Robotics",
     org: "Khalifa University",
     location: "Abu Dhabi, UAE",
-    note: "Incoming",
+    note: "In progress",
   },
   {
     period: "09.2024 — 06.2026",

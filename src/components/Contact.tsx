@@ -24,9 +24,17 @@ export function Contact() {
           Let's build something intelligent
         </h2>
         <p className="mt-4 text-base text-theme-muted">
-          Starting a Ph.D. in Robotics at Khalifa University this fall. Open to research
-          collaborations and engineering opportunities in embodied AI — reach out if you want to
-          talk world models, VLA, or humanoid control.
+          Pursuing a Ph.D. in Robotics at Khalifa University and working as a Physical AI researcher with{" "}
+          <a
+            href={profile.links.kura}
+            target="_blank"
+            rel="noreferrer"
+            className="text-brand-text underline decoration-brand/40 underline-offset-4 transition-colors hover:decoration-brand"
+          >
+            KURA
+          </a>{" "}
+          in Abu Dhabi. Open to research collaborations and engineering opportunities in embodied AI —
+          reach out if you want to talk world models, VLA, or humanoid control.
         </p>
       </Reveal>
 

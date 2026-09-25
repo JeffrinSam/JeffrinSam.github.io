@@ -6,7 +6,7 @@ import { publications } from "../data/publications";
 
 const facts = [
   { label: "Based in", value: profile.location },
-  { label: "Current role", value: "Skoltech ISR Lab · MWS AI (Contract)" },
+  { label: "Current role", value: "Physical AI Researcher · KURA, Khalifa University", href: profile.links.kura },
   { label: "Focus", value: "World Models · AI Safety · AGI · VLA · Humanoid Control" },
   { label: "Platforms", value: "Unitree G1 / H1 · UAV / VTOL" },
 ];
@@ -47,7 +47,18 @@ export function About() {
             {facts.map((fact) => (
               <div key={fact.label}>
                 <dt className="font-mono text-xs uppercase tracking-widest text-theme-muted">{fact.label}</dt>
-                <dd className="mt-1 text-sm text-ink">{fact.value}</dd>
+                <dd className="mt-1 text-sm text-ink">
+                  {fact.href ? (
+                    <a
+                      href={fact.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="underline decoration-brand/40 underline-offset-4 transition-colors hover:text-brand-text hover:decoration-brand"
+                    >
+                      {fact.value}
+                    </a>
+                  ) : fact.value}
+                </dd>
               </div>
             ))}
           </dl>

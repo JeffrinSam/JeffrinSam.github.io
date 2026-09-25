@@ -73,6 +73,7 @@ export function RobotBackground() {
       const THREE = await import("three");
       const { GLTFLoader } = await import("three/examples/jsm/loaders/GLTFLoader.js");
       const { DRACOLoader } = await import("three/examples/jsm/loaders/DRACOLoader.js");
+      const { RoomEnvironment } = await import("three/examples/jsm/environments/RoomEnvironment.js");
       if (cancelled || !container) return;
 
       // 1. Scene & Camera Setup
@@ -82,24 +83,56 @@ export function RobotBackground() {
       camera.lookAt(0, 0.85, 0);
 
       const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: "high-performance" });
+      const resources = new Set<{ dispose(): void }>();
+      let disposed = false;
+      let rafId = 0;
+      let resizeObserver: ResizeObserver | undefined;
+      function track<T extends { dispose(): void }>(resource: T): T {
+        if (!resources.has(resource)) {
+          resources.add(resource);
+          // A model can finish loading after this effect has already unmounted.
+          if (disposed) resource.dispose();
+        }
+        return resource;
+      }
+      cleanup = () => {
+        if (disposed) return;
+        disposed = true;
+        cancelAnimationFrame(rafId);
+        resizeObserver?.disconnect();
+        for (const resource of resources) resource.dispose();
+        renderer.dispose();
+        renderer.domElement.remove();
+      };
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.75));
       renderer.toneMapping = THREE.ACESFilmicToneMapping;
-      renderer.toneMappingExposure = 1.15;
+      renderer.toneMappingExposure = 1.0;
       container.appendChild(renderer.domElement);
 
-      // 2. High-Tech Studio Lighting
-      const hemi = new THREE.HemisphereLight(0xffffff, 0x1a2233, 1.2);
+      // A studio environment gives the metal real reflections instead of black surfaces.
+      const studio = new RoomEnvironment();
+      const pmrem = new THREE.PMREMGenerator(renderer);
+      try {
+        const environment = track(pmrem.fromScene(studio, 0.04));
+        scene.environment = environment.texture;
+      } finally {
+        studio.dispose();
+        pmrem.dispose();
+      }
+
+      // Soft key/fill lighting, with restrained colored edges.
+      const hemi = new THREE.HemisphereLight(0xf0f5ff, 0x586170, 1.5);
       
       const keyLight = new THREE.DirectionalLight(0xffffff, 2.8);
       keyLight.position.set(3, 5, 4);
 
-      const fillLight = new THREE.DirectionalLight(0x88bbff, 1.0);
+      const fillLight = new THREE.DirectionalLight(0xcbdfff, 1.4);
       fillLight.position.set(-4, 3, 2);
 
-      const cyberRimLeft = new THREE.DirectionalLight(0x76b900, 2.2);
+      const cyberRimLeft = new THREE.DirectionalLight(0xb4d88c, 0.65);
       cyberRimLeft.position.set(-3.5, 2.5, -3);
 
-      const cyberRimRight = new THREE.DirectionalLight(0x00e5ff, 1.8);
+      const cyberRimRight = new THREE.DirectionalLight(0x99d9ed, 0.8);
       cyberRimRight.position.set(3.5, 2.5, -3);
 
       const topAccent = new THREE.PointLight(0xffffff, 1.5, 10);
@@ -110,6 +143,8 @@ export function RobotBackground() {
       // 3. Grid & Environment Rings
       const grid = new THREE.GridHelper(12, 36, 0x76b900, 0x445566);
       const gridMat = grid.material as InstanceType<typeof THREE.LineBasicMaterial>;
+      track(grid.geometry);
+      track(gridMat);
       gridMat.transparent = true;
       gridMat.opacity = 0.22;
       scene.add(grid);
@@ -128,58 +163,105 @@ export function RobotBackground() {
         gradient.addColorStop(1, "rgba(0,0,0,0)");
         ctx.fillStyle = gradient;
         ctx.fillRect(0, 0, 128, 128);
-        const texture = new THREE.CanvasTexture(canvas);
+        const texture = track(new THREE.CanvasTexture(canvas));
         return texture;
       }
       const shadowTexture = createShadowTexture();
-      const shadowGeo = new THREE.PlaneGeometry(1.2, 1.2);
+      const shadowGeo = track(new THREE.PlaneGeometry(1.2, 1.2));
       shadowGeo.rotateX(-Math.PI / 2);
 
       // 5. Realistic PBR Materials
-      const bodyMatDark = new THREE.MeshStandardMaterial({
-        color: 0x242830,
-        metalness: 0.75,
-        roughness: 0.28,
-        envMapIntensity: 1.2,
-      });
+      const bodyMatDark = track(new THREE.MeshStandardMaterial({
+        color: 0x8995a5,
+        metalness: 0.45,
+        roughness: 0.36,
+        envMapIntensity: 0.85,
+      }));
 
-      const bodyMatLight = new THREE.MeshStandardMaterial({
-        color: 0xdde2eb,
-        metalness: 0.65,
-        roughness: 0.25,
-        envMapIntensity: 1.1,
-      });
+      const bodyMatLight = track(new THREE.MeshStandardMaterial({
+        color: 0x3c4b60,
+        metalness: 0.35,
+        roughness: 0.38,
+        envMapIntensity: 0.55,
+      }));
 
-      const chassisJointMat = new THREE.MeshStandardMaterial({
-        color: 0x141619,
-        metalness: 0.6,
+      const chassisJointMat = track(new THREE.MeshStandardMaterial({
+        color: 0x202832,
+        metalness: 0.25,
+        roughness: 0.52,
+      }));
+
+      const visorMat = track(new THREE.MeshPhysicalMaterial({
+        color: 0x101822,
+        metalness: 0.3,
+        roughness: 0.22,
+        clearcoat: 1,
+        clearcoatRoughness: 0.16,
+        envMapIntensity: 0.9,
+        side: THREE.DoubleSide,
+      }));
+      const logoMat = track(new THREE.MeshStandardMaterial({
+        color: 0xc2ccd7,
+        metalness: 0.25,
         roughness: 0.45,
-      });
+      }));
 
-      const sensorGlowMat = new THREE.MeshStandardMaterial({
+      const sensorGlowMat = track(new THREE.MeshStandardMaterial({
         color: 0x76b900,
         metalness: 0.4,
         roughness: 0.2,
         emissive: 0x76b900,
-        emissiveIntensity: 2.4,
-      });
+        emissiveIntensity: 0.4,
+      }));
 
-      const sensorCyanGlowMat = new THREE.MeshStandardMaterial({
+      const sensorCyanGlowMat = track(new THREE.MeshStandardMaterial({
         color: 0x00e5ff,
         metalness: 0.4,
         roughness: 0.2,
         emissive: 0x00e5ff,
-        emissiveIntensity: 2.4,
-      });
+        emissiveIntensity: 0.4,
+      }));
 
-      const draco = new DRACOLoader().setDecoderPath("/draco/");
+      const draco = track(new DRACOLoader().setDecoderPath("/draco/"));
       const loader = new GLTFLoader().setDRACOLoader(draco);
-      const gltf = await loader.loadAsync("/robot/g1.glb").catch(() => null);
-      if (cancelled || !gltf) return;
+      const gltf = await loader.loadAsync("/robot/g1.glb");
+      // Capture original resources before clone materials are replaced. The set
+      // also prevents shared geometries and materials from being disposed twice.
+      for (const modelScene of gltf.scenes) {
+        modelScene.traverse((obj) => {
+          const mesh = obj as InstanceType<typeof THREE.Mesh>;
+          if (!mesh.isMesh) return;
+          track(mesh.geometry);
+          const materials = Array.isArray(mesh.material) ? mesh.material : [mesh.material];
+          for (const material of materials) {
+            track(material);
+            for (const value of Object.values(material)) {
+              if (value instanceof THREE.Texture) track(value);
+            }
+          }
+        });
+      }
+      if (cancelled) return;
 
       // Base robot setup
       const baseInner = gltf.scene;
       baseInner.rotation.set(-Math.PI / 2, 0, 0);
+
+      // The exported shell has an open sensor cavity. Fill it with recessed glass
+      // in the head's local URDF frame (X forward, Z up), before cloning the rig.
+      const head = baseInner.getObjectByName("head_link");
+      if (head) {
+        const visor = new THREE.Mesh(track(new THREE.SphereGeometry(1, 32, 24)), visorMat);
+        visor.name = "head_visor_insert";
+        visor.position.set(-0.002, 0, 0.446);
+        visor.scale.set(0.035, 0.046, 0.061);
+        head.add(visor);
+
+        const sensor = new THREE.Mesh(track(new THREE.SphereGeometry(0.0035, 12, 8)), sensorGlowMat);
+        sensor.name = "sensor_accent";
+        sensor.position.set(0.034, -0.015, 0.447);
+        head.add(sensor);
+      }
 
       // Compute base height
       const tempGroup = new THREE.Group();
@@ -206,12 +288,12 @@ export function RobotBackground() {
         scene.add(root);
 
         // Ground Contact Shadow
-        const shadowMat = new THREE.MeshBasicMaterial({
+        const shadowMat = track(new THREE.MeshBasicMaterial({
           map: shadowTexture,
           transparent: true,
           opacity: 0.6,
           depthWrite: false,
-        });
+        }));
         const shadow = new THREE.Mesh(shadowGeo, shadowMat);
         shadow.position.y = 0.005;
         scene.add(shadow);
@@ -252,9 +334,13 @@ export function RobotBackground() {
             if (!mesh.isMesh) return;
             if (!mesh.geometry.getAttribute("normal")) mesh.geometry.computeVertexNormals();
             const name = mesh.name.toLowerCase();
-            if (/head|logo|d435|d455|mid360/.test(name)) {
+            if (/sensor_accent/.test(name)) {
               mesh.material = r.id === "left" ? sensorCyanGlowMat : sensorGlowMat;
-            } else if (/hand|foot|ankle|joint|motor/.test(name)) {
+            } else if (/head|visor|d435|d455|mid360/.test(name)) {
+              mesh.material = visorMat;
+            } else if (/logo/.test(name)) {
+              mesh.material = logoMat;
+            } else if (/hand|foot|ankle|joint|motor|wrist|thumb|index|middle|ring|pinky|waist|shoulder_roll|shoulder_yaw/.test(name)) {
               mesh.material = chassisJointMat;
             } else {
               mesh.material = bodyMat;
@@ -276,7 +362,7 @@ export function RobotBackground() {
         centerShiftX = Math.min(1.05, Math.max(0, (camera.aspect - 1.1) * 0.85));
       }
       placeModel();
-      const resizeObserver = new ResizeObserver(placeModel);
+      resizeObserver = new ResizeObserver(placeModel);
       resizeObserver.observe(container);
 
       // Formation Targets
@@ -304,7 +390,6 @@ export function RobotBackground() {
       // 8. Animation & Choreography Loop
       const q = new THREE.Quaternion();
       const clock = new THREE.Clock();
-      let rafId = 0;
       let lastTheme = stateRef.current.theme;
       let currentCamX = 0;
       let currentCamY = 1.15;
@@ -318,9 +403,11 @@ export function RobotBackground() {
         }
 
         const dark = theme === "dark";
-        hemi.intensity = dark ? 0.8 : 1.2;
-        keyLight.intensity = dark ? 2.2 : 3.0;
-        gridMat.opacity = dark ? 0.22 : 0.14;
+        hemi.intensity = dark ? 1.5 : 0.85;
+        keyLight.intensity = dark ? 2.0 : 1.25;
+        fillLight.intensity = dark ? 1.4 : 0.8;
+        renderer.toneMappingExposure = dark ? 1.0 : 0.85;
+        gridMat.opacity = dark ? 0.12 : 0.07;
 
         if (!enabled) {
           // Hide all robots smoothly
@@ -353,6 +440,10 @@ export function RobotBackground() {
         currentCamY += (targetCamY - currentCamY) * dt * 3.5;
         camera.position.x = currentCamX;
         camera.position.y = currentCamY;
+        // Fit the full dancing formation on narrow screens, including arm reach.
+        const formationSpan = formation === "solo" ? 1.5 : formation === "duet" ? 3.0 : 3.8;
+        const horizontalFov = 2 * Math.tan(THREE.MathUtils.degToRad(camera.fov / 2)) * camera.aspect;
+        camera.position.z = Math.max(3.4, (formationSpan + 2 * centerShiftX) / horizontalFov + 0.25);
         camera.lookAt(currentCamX * 0.5, 0.85, 0);
 
         updateFormationTargets(formation);
@@ -426,30 +517,9 @@ export function RobotBackground() {
         rafId = requestAnimationFrame(frame);
       }
       rafId = requestAnimationFrame(frame);
-
-      cleanup = () => {
-        cancelAnimationFrame(rafId);
-        resizeObserver.disconnect();
-        draco.dispose();
-        shadowTexture?.dispose();
-        shadowGeo.dispose();
-        bodyMatDark.dispose();
-        bodyMatLight.dispose();
-        chassisJointMat.dispose();
-        sensorGlowMat.dispose();
-        sensorCyanGlowMat.dispose();
-        for (const r of robots) {
-          r.inner.traverse((obj: any) => {
-            const mesh = obj as InstanceType<typeof THREE.Mesh>;
-            if (mesh.isMesh) mesh.geometry.dispose();
-          });
-        }
-        renderer.dispose();
-        renderer.domElement.remove();
-      };
     }
 
-    init().catch(() => {});
+    init().catch(() => cleanup?.());
     return () => {
       cancelled = true;
       cleanup?.();
@@ -461,7 +531,7 @@ export function RobotBackground() {
       ref={containerRef}
       aria-hidden
       style={{
-        opacity: enabled ? 0.75 : 0,
+        opacity: enabled ? (theme === "dark" ? 0.62 : 0.55) : 0,
         transition: "opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1)",
       }}
       className="pointer-events-none fixed inset-0 z-0 [&>canvas]:h-full [&>canvas]:w-full"
