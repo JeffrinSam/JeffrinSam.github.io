@@ -1,10 +1,9 @@
-import { FiMail, FiGithub, FiLinkedin, FiTwitter } from "react-icons/fi";
+import { FiGithub, FiLinkedin, FiTwitter } from "react-icons/fi";
 import { SiHuggingface, SiGooglescholar, SiOrcid } from "react-icons/si";
 import { Reveal } from "./Reveal";
 import { profile } from "../data/profile";
 
 const socials = [
-  { label: "Email", href: profile.links.email, icon: FiMail },
   { label: "GitHub", href: profile.links.github, icon: FiGithub },
   { label: "LinkedIn", href: profile.links.linkedin, icon: FiLinkedin },
   { label: "Google Scholar", href: profile.links.scholar, icon: SiGooglescholar },
@@ -43,8 +42,8 @@ export function Contact() {
           <a
             key={label}
             href={href}
-            target={href.startsWith("mailto:") ? undefined : "_blank"}
-            rel={href.startsWith("mailto:") ? undefined : "noreferrer"}
+            target="_blank"
+            rel="noreferrer"
             aria-label={label}
             title={label}
             className="border-theme flex h-11 w-11 items-center justify-center rounded-full border text-theme-muted transition-colors hover:border-brand hover:text-brand-text"

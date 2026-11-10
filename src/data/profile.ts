@@ -1,7 +1,6 @@
 export const profile = {
   name: "Jeffrin Sam",
   location: "Abu Dhabi, UAE",
-  email: "jeffrin.s.a@gmail.com",
   roles: [
     "Physical AI Researcher",
     "World Action Model Researcher",
@@ -21,6 +20,5 @@ export const profile = {
     orcid: "https://orcid.org/0009-0000-8635-5379",
     acm: "https://dl.acm.org/profile/99661838377",
     ieee: "https://ieee-collabratec.ieee.org/app/p/JeffrinSam?slv=true",
-    email: "mailto:jeffrin.s.a@gmail.com",
   },
 };
